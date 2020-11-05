@@ -12,7 +12,7 @@ Install the client locally and all its dependencies
 
 ### `npm start`
 
-NOTE: npm install to run before this command
+NOTE: npm install to run before this command/
 NOTE: You need to start the backend API in order to search for package information
 
 Runs the app in the development mode.
