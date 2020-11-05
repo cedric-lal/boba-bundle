@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import packageStats from "./packageStats";
-import search from "./search";
+import packageStats from "./package-stats/packageStats";
+import search from "./search/search";
 
 export default combineReducers({
   search,

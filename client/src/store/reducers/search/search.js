@@ -1,5 +1,5 @@
 import produce from "immer";
-import { INPUT_UPDATED } from "../actions/types";
+import { INPUT_UPDATED } from "../../actions/types";
 
 const defaultState = {
     currentSearch: ""

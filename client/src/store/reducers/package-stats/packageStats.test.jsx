@@ -1,5 +1,5 @@
 import packageStats from "./packageStats";
-import * as ActionTypes from "../actions/types";
+import * as ActionTypes from "../../actions/types";
 
 const defaultState = {
   fetchingDone: false,

@@ -1,5 +1,5 @@
 import produce from "immer";
-import { FETCH_ERROR, FETCH_SUCCESS, START_FETCHING } from "../actions/types";
+import { FETCH_ERROR, FETCH_SUCCESS, START_FETCHING } from "../../actions/types";
 
 const defaultState = {
   fetchingDone: false,

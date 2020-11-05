@@ -59,3 +59,13 @@ test("All minified and gzip sizes are displayed", () => {
   expect(version2MinifiedSizes.length).toEqual(3);
   expect(version2GzipSizes.length).toEqual(3);
 });
+
+test("Chart legend is displayed", () => {
+  const renderedChart = render(<Chart sizeStats={sizeStatsMock} />);
+
+  const minifiedLegend = renderedChart.getByText("Minified");
+  const gzipSizeLegend = renderedChart.getByText("Minified + gzip");
+
+  expect(minifiedLegend).toBeInTheDocument();
+  expect(gzipSizeLegend).toBeInTheDocument();
+});
