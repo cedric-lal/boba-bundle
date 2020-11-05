@@ -1,0 +1,7 @@
+/** Global mixin of the application */
+
+@mixin tablet-landscape-and-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}

@@ -1,0 +1,39 @@
+.search-container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+input {
+  width: 70%;
+  height: 55px;
+  padding: 0;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+
+  &::placeholder {
+    color: var(--light-text-color);
+  }
+}
+
+button {
+  width: 55px;
+  height: 55px;
+  vertical-align: middle;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #ff6a24; //Fallback for the gradient
+  background: linear-gradient(10deg, #ff6a24 9%, #fcff00 100%);
+  color: var(--primary-text-color);
+  font-size: 20px;
+}
+
+.loupe-icon {
+  width: 22px;
+  height: 22px;
+}

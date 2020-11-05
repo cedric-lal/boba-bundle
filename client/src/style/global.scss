@@ -1,0 +1,21 @@
+/** Global style of the application */
+
+// Set up the default theme colors of the application
+:root {
+  --primary-bg-color: #003366;
+  --primary-text-color: #ffffff;
+  --light-text-color: #dcdcdc;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+
+  box-sizing: border-box;
+}

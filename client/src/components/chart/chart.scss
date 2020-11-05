@@ -1,0 +1,122 @@
+@import "../../style/mixin.scss";
+
+.chart-panel {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto 0 auto;
+  padding-bottom: 20px;
+}
+
+.chart-title {
+  text-align: center;
+  font-size: 38px;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  height: 300px;
+  position: relative;
+  margin: 0 0 85px 0;
+
+  @include tablet-landscape-and-up() {
+    height: 500px;
+    margin: 0 0 120px 0;
+  }
+}
+
+.bar {
+  padding: 0 10px;
+  text-align: center;
+  position: relative;
+
+  @include tablet-landscape-and-up() {
+    padding: 0 20px;
+  }
+
+  .wrapper {
+    position: relative;
+    width: 50px;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    @include tablet-landscape-and-up() {
+      width: 60px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fb6018;
+      border-radius: 5px;
+      transform: translate3d(0, calc(100% - var(--value-minified)), 0);
+      transition: transform 0.25s ease-in;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #e4ba00;
+      border-radius: 5px;
+      transform: translate3d(0, calc(100% - var(--value-gzipped)), 0);
+      transition: transform 0.25s ease-in;
+    }
+  }
+
+  .size-minified,
+  .size-gzipped {
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
+
+  .size-minified {
+    top: calc(100% - var(--value-minified));
+  }
+
+  .size-gzipped {
+    top: calc(100% - var(--value-gzipped));
+  }
+
+  .version {
+    width: 100%;
+    transform: rotate3D(0, 0, 1, -90deg) translate3d(-100%, 0, 0);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.legend {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+
+  .minified,
+  .gzip {
+    &::before {
+      display: inline-block;
+      content: "";
+      height: 15px;
+      width: 15px;
+      margin-right: 5px;
+    }
+  }
+
+  .minified::before {
+    background-color: #fb6018;
+  }
+
+  .gzip::before {
+    background-color: #e4ba00;
+  }
+}

@@ -1,0 +1,18 @@
+@import "../../style/mixin.scss";
+
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.dashboard-information-panel {
+  margin-top: 50px;
+}
+
+.stat-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
