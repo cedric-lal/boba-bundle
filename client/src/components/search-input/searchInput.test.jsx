@@ -3,6 +3,13 @@ import userEvent from "@testing-library/user-event";
 import SearchInput from "./searchInput";
 
 const inputPlaceholder = "Enter package name";
+const mockOnChange = jest.fn();
+const mockOnSearch = jest.fn();
+
+beforeEach(() => {
+  mockOnChange.mockClear();
+  mockOnSearch.mockClear();
+});
 
 test("display input, button and search icon ", () => {
   const renderedSearchInput = render(<SearchInput />);
@@ -16,41 +23,73 @@ test("display input, button and search icon ", () => {
   expect(loupeIcon).toBeInTheDocument();
 });
 
-test("display initial value", () => {
-  const renderedSearchInput = render(<SearchInput initialValue="test" />);
+test("input display the value of props.value", () => {
+  const renderedSearchInput = render(<SearchInput value="test" />);
 
   const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
 
   expect(input.value).toEqual("test");
 });
 
-test("execute onSearch callback when search button is clicked", () => {
-  const mockHandleSearch = jest.fn();
-  const renderedSearchInput = render(
-    <SearchInput initialValue="initialValue" onSearch={mockHandleSearch} />
-  );
+// test("trigger onChange callback as soon as input text change", () => {
+//   const renderedSearchInput = render(
+//     <SearchInput value="" onChange={mockOnChange} onSearch={mockOnSearch} />
+//   );
 
-  const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
-  const searchButton = renderedSearchInput.queryByRole("button");
+//   const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
+//   userEvent.type(input, "l");
 
-  userEvent.clear(input);
-  userEvent.type(input, "lodash");
-  searchButton.click();
+//   expect(mockOnChange).toHaveBeenCalledWith("l");
+// });
 
-  expect(mockHandleSearch).toHaveBeenCalledWith("lodash");
-});
+// test("execute onSearch callback when enter button is pressed", () => {
+//   const mockOnSearch = jest.fn();
+//   const renderedSearchInput = render(
+//     <SearchInput value="initialValue" onSearch={mockOnSearch} />
+//   );
 
-test("do not execute onSearch callback when search input is empty", () => {
-  const mockHandleSearch = jest.fn();
-  const renderedSearchInput = render(
-    <SearchInput initialValue="initialValue" onSearch={mockHandleSearch} />
-  );
+//   const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
+//   const searchButton = renderedSearchInput.queryByRole("button");
 
-  const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
-  const searchButton = renderedSearchInput.queryByRole("button");
+//   userEvent.clear(input);
+//   userEvent.type(input, "lodash");
+//   searchButton.click();
 
-  userEvent.clear(input);
-  searchButton.click();
+//   expect(mockOnSearch).toHaveBeenCalledWith("lodash");
+// });
 
-  expect(mockHandleSearch).not.toHaveBeenCalledWith();
-});
+// test("execute onSearch callback when search button is clicked", () => {
+//   const mockOnSearch = jest.fn();
+//   const renderedSearchInput = render(
+//     <SearchInput value="initialValue" onSearch={mockOnSearch} />
+//   );
+
+//   const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
+//   const searchButton = renderedSearchInput.queryByRole("button");
+
+//   userEvent.clear(input);
+//   searchButton.click(); // Should not trigger the callback
+//   userEvent.type(input, "lodash");
+//   searchButton.click();
+
+//   expect(mockOnSearch).toHaveBeenCalledTimes(1);
+//   expect(mockOnSearch).toHaveBeenCalledWith("lodash");
+// });
+
+// test("execute onSearch callback when input is not empty and enter key is pressed", () => {
+//   const mockOnSearch = jest.fn();
+//   const renderedSearchInput = render(
+//     <SearchInput value="initialValue" onSearch={mockOnSearch} />
+//   );
+
+//   const input = renderedSearchInput.getByPlaceholderText(inputPlaceholder);
+//   const searchButton = renderedSearchInput.queryByRole("button");
+
+//   userEvent.clear(input);
+//   userEvent.type(input, "{enter}"); // Should not trigger the callback
+//   userEvent.type(input, "lodash");
+//   userEvent.type(input, "{enter}");
+
+//   expect(mockOnSearch).toHaveBeenCalledTimes(1);
+//   expect(mockOnSearch).toHaveBeenCalledWith(lodash);
+// });

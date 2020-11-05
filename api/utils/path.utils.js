@@ -29,7 +29,7 @@ const getPackageJson = (moduleFolderPath) => {
  * @returns {string} absolute path to the entry point 
  */
 const getPathToEntryPoint = (pkgName, version, packageJson) => {
-    const entryPoint = packageJson.main
+    let entryPoint = packageJson.main
     if (!entryPoint) entryPoint = 'index.js'
     return path.join(getModuleFolderPath(pkgName, version), entryPoint);
 }

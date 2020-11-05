@@ -2,7 +2,8 @@ import "./dashboard.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { fetchingPackageStats } from "../../store/actions/dashboard";
+import { fetchingPackageStats } from "../../store/actions/packageStats";
+import { updateSearchInput } from "../../store/actions/search";
 import SearchInput from "../../components/search-input/searchInput";
 import PackageInfo from "../../components/package-info/packageInfo";
 import LoadingSpinner from "../../components/loading-spinner/loadingSpinner";
@@ -18,14 +19,28 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   // Get dashboard data from the store
-  let { fetchingDone, hasError, errorMessage, sizeStats } = useSelector(
-    (state) => state.dashboard
-  );
+  let {
+    currentSearch,
+    fetchingDone,
+    hasError,
+    errorMessage,
+    sizeStats,
+  } = useSelector((state) => {
+    return { ...state.search, ...state.packageStats };
+  });
 
   // Hook use to trigger backend calls and update the store
   useEffect(() => {
     dispatch(fetchingPackageStats(packageName));
   }, [dispatch, packageName]);
+
+  /**
+   * Handle the input search value change by dispatching an action
+   * @param {string} newSearch new input search value
+   */
+  const handleSearchInputChange = (newSearch) => {
+    dispatch(updateSearchInput(newSearch));
+  };
 
   /**
    *
@@ -58,7 +73,11 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <SearchInput initialValue={packageName} onSearch={handleSearch} />
+      <SearchInput
+        value={currentSearch}
+        onSearch={handleSearch}
+        onChange={handleSearchInputChange}
+      />
       <section className="dashboard-information-panel">
         {dashboardPanel}
       </section>

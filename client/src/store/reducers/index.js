@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import dashboard from "./dashboard";
+import packageStats from "./packageStats";
+import search from "./search";
 
 export default combineReducers({
-  dashboard,
+  search,
+  packageStats
 });

@@ -1,14 +1,17 @@
 import { FETCH_ERROR, FETCH_SUCCESS, START_FETCHING } from "./types";
+import { updateSearchInput } from "./search";
 import * as packageApi from "../../api/package";
 
 /**
- * 
+ * Dispatch the actions to handle package search
  * @param {string} packageName
  */
-export function fetchingPackageStats(
+export const fetchingPackageStats = (
   packageName
-) {
+) => {
   return (dispatch) => {
+    // Make sure the input value match the search (if user search package with URL directly for example)
+    dispatch(updateSearchInput(packageName));
     dispatch(startFetching(packageName));
     return packageApi
       .search(packageName)
@@ -23,10 +26,10 @@ export function fetchingPackageStats(
 }
 
 /**
- * Start fetching package stats data action
+ * Start fetching package stats action
  * @param {string} packageName 
  */
-export function startFetching(packageName) {
+export const startFetching = (packageName) => {
   return { type: START_FETCHING, payload: packageName };
 }
 
@@ -39,9 +42,9 @@ export function fetchSuccess(payload) {
 }
 
 /**
- * API call finish and error action
+ * API call finish with error
  * @param {string} errorMessage
  */
-export function fetchError(errorMessage) {
+export const fetchError = (errorMessage) => {
   return { type: FETCH_ERROR, errorMessage };
 }

@@ -1,5 +1,5 @@
-import dashboard from "./dashboard";
-import * as ActionTypes from "./../actions/types";
+import packageStats from "./packageStats";
+import * as ActionTypes from "../actions/types";
 
 const defaultState = {
   fetchingDone: false,
@@ -15,7 +15,7 @@ const sizeStatsMock = {
 };
 
 test("reducer return default state", () => {
-  const state = dashboard(undefined, { type: "unknown action" });
+  const state = packageStats(undefined, { type: "unknown action" });
   expect(state).toEqual(defaultState);
 });
 
@@ -23,7 +23,7 @@ test("reducer return state unchanged when action unknown", () => {
   const previousState = { ...defaultState };
   previousState.fetchingDone = true;
 
-  const state = dashboard(previousState, { type: "unknown action" });
+  const state = packageStats(previousState, { type: "unknown action" });
 
   expect(state).toBe(previousState); // Same object reference is returned
 });
@@ -43,7 +43,9 @@ test("reducer return new state when start fetching", () => {
     sizeStats: [{ version: 0 }], // Current data should not be impacted but starting a new fetch
   };
 
-  const state = dashboard(previousState, { type: ActionTypes.START_FETCHING });
+  const state = packageStats(previousState, {
+    type: ActionTypes.START_FETCHING,
+  });
 
   expect(state).not.toBe(previousState); // Check that state hasn't been mutated
   expect(state).toEqual(expectedState);
@@ -57,7 +59,7 @@ test("fetch success from default state", () => {
     sizeStats: sizeStatsMock,
   };
 
-  const state = dashboard(defaultState, {
+  const state = packageStats(defaultState, {
     type: ActionTypes.FETCH_SUCCESS,
     payload: sizeStatsMock,
   });
@@ -81,7 +83,7 @@ test("fetch success after an error", () => {
     sizeStats: sizeStatsMock,
   };
 
-  const state = dashboard(defaultState, {
+  const state = packageStats(defaultState, {
     type: ActionTypes.FETCH_SUCCESS,
     payload: sizeStatsMock,
   });
@@ -105,7 +107,7 @@ test("reducer return new state on fetch error", () => {
     sizeStats: [],
   };
 
-  const state = dashboard(previousState, {
+  const state = packageStats(previousState, {
     type: ActionTypes.FETCH_ERROR,
     errorMessage: "error message",
   });
