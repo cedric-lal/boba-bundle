@@ -8,6 +8,9 @@
     "debug": "nodemon --inspect --verbose --ignore './workspace/'  ./bin/www"
   },
   "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
     "builtin-modules": "^3.1.0",
     "cors": "^2.8.5",
     "css-loader": "^5.0.0",

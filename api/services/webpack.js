@@ -31,10 +31,10 @@ const bundlePackage = async (pkgName, version) => {
  * @param {Object} config
  */
 const runWebpack = async (config) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         webpack(config, (err, stats) => {
             if (err || stats.hasErrors()) {
-                reject(err)
+                reject(stats.compilation.errors)
             } else {
                 resolve()
             }
@@ -114,6 +114,15 @@ const getWebpackConfig = (pkgName, version, packageJson, outputFolderPath) => {
         ],
         module: {
             rules: [
+                {
+                    test: /\.m?js$/,
+                    use: {
+                        loader: require.resolve('babel-loader'),
+                        options: {
+                            presets: [require.resolve('@babel/preset-env')]
+                        }
+                    }
+                },
                 {
                     test: /\.tsx?$/,
                     loader: require.resolve('ts-loader')
