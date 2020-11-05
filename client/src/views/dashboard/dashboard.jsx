@@ -36,7 +36,7 @@ const Dashboard = () => {
   };
 
   // Select which panel to display
-  let dashboardPanel = "loading";
+  let dashboardPanel = null;
   if (fetchingDone && !hasError) {
     // Data ready for display state
     dashboardPanel = (

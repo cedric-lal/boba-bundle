@@ -9,7 +9,7 @@ import "./packageInfo.scss";
 const PackageInfo = (props) => {
   return (
     <div className="package-info">
-      <h2> Bundle size </h2>
+      <h2> Latest version bundle size </h2>
       <div className="minified">
         <span className="size">{props.minifiedSizeInKb}</span>
         <span className="unit">Kb</span>

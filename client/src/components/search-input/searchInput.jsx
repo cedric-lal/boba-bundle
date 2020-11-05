@@ -1,14 +1,18 @@
 import "./searchInput.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * Search input component with typeahead capability
  * @param {object} props props of the component
  * @param {string} props.initialValue initial value of the input
- * @param {} props.onSearch callback trigger to handle search
+ * @param {Function} props.onSearch callback trigger to handle search
  */
 const SearchInput = (props) => {
   const [currentSearch, setCurrentSearch] = useState(props.initialValue);
+
+  useEffect(() => {
+    setCurrentSearch(props.initialValue);
+  }, [setCurrentSearch, props.initialValue]);
 
   /**
    *
@@ -43,7 +47,7 @@ const SearchInput = (props) => {
         onChange={onChange}
         onKeyPress={handleKeyPress}
       ></input>
-      <button type="button" onClick={onSearch}>
+      <button type="button" role="button" onClick={onSearch}>
         <img className="loupe-icon" src="/loupe.svg" alt="Loupe icon" />
       </button>
     </div>
