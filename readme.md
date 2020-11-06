@@ -5,14 +5,14 @@ It bundle a the package with all its dependencies in order to let you know the r
 
 Boba bundle also provides information about the size of previous versions of the package.
 
-1. [ API Documentation ](#apiDoc)
-   1.1. [ Technical architecture ](#apiTechnicalArchitecture)
-   1.2 [ How does it work ](#howItWorks)
-   1.3 [ Limitations of the API](#apiLimitation)
-   1.4 [ Improvement list ](#apiImprovement)
-2. [ Client documentation ](#clientDoc)
-   2.1. [ Technical architecture ](#clientTechnicalArchitecture)
-   2.2 [ Improvement list ](#clientImprovement)
+1. [ API Documentation ](#apiDoc)\
+   &nbsp;1.1. [ Technical architecture ](#apiTechnicalArchitecture)\
+   &nbsp;1.2 [ How does it work ](#howItWorks)\
+   &nbsp;1.3 [ Limitations of the API](#apiLimitation)\
+   &nbsp;1.4 [ Improvement list ](#apiImprovement)\
+2. [ Client documentation ](#clientDoc)\
+   &nbsp;2.1. [ Technical architecture ](#clientTechnicalArchitecture)\
+   &nbsp;2.2 [ Improvement list ](#clientImprovement)\
 
 <a name="apiDocumentation"></a>
 
@@ -20,19 +20,19 @@ Boba bundle also provides information about the size of previous versions of the
 
 <a name="apiTechnicalArchitecture"></a>
 
-## 1.1 Technical architecture
+### 1.1 Technical architecture
 
 <a name="howItWorks"></a>
 
-## 1.2 How does it work
+### 1.2 How does it work
 
 <a name="apiLimitation"></a>
 
-## 1.3 Limitations of the API
+### 1.3 Limitations of the API
 
 <a name="apiImprovement"></a>
 
-## 1.4 Improvement list
+### 1.4 Improvement list
 
 <a name="clientDoc"></a>
 
@@ -40,11 +40,11 @@ Boba bundle also provides information about the size of previous versions of the
 
 <a name="clientTechnicalArchitecture"></a>
 
-## 2.1 Technical architecture
+### 2.1 Technical architecture
 
 <a name="clientImprovement"></a>
 
-## 2.2 CImprovement list
+### 2.2 CImprovement list
 
 Note that the contextAPI could have been used in order to simply story the state of the application. Redux has been use only as a technical demonstration.
 
