@@ -5,6 +5,8 @@ It compute the size of the package itself along with all the dependency its drag
 
 Boba bundle also provides information about the size of 3 previous versions of the package and the previous major version.
 
+NOTE: To run the application, go to the readme of the api or client where you will find available commands.
+
 1. [ API Documentation ](#apiDoc)  
    &nbsp;1.1. [ Technical architecture ](#apiTechnicalArchitecture)  
    &nbsp;1.2 [ How does it work ](#howItWorks)  
@@ -109,10 +111,38 @@ The user can execute a new search directly from the dashboard by interacting wit
 
 ### 2.2 Technical architecture
 
-The client of boba bundle is an independent application that is only communication to the API through http calls.
+The client of boba bundle is an independent application that is only communicating to the API through http calls.
+
+It is built using the React framework with the redux store architecture. The redux store was not necessary in such a small and simple application but has been implemented for technical demonstration.
+
+The application follow a basic redux architecture, meaning that when the user do am action the view dispatch the action to the store, the action then do some logic and call a reducer that will return a new state. The view receive the new state and re render.
+
+The structure of the application is as follow:
+
+- api: contains all the helpers to do backend calls
+- components: simple reusable component that are not connected to the store
+- store: container the reducers and actions of the store
+- style: contains the global styling of the application (theming, mixins, CSS rests ...)
+- views: container components connected to the store to retrieve data and dispatch actions
+
+The middleware thunk is used in order to manage asynchronous call to the API. For example when a user search for a package, the async action creator search package is trigger and will dispatch multiple actions such as 'start fetching' to have a loading state or after API responded it can dispatch fetch error or success depending on the result with the corresponding payload.
+
+In order to simplify the reducer's logic the library immer is used. This library let you simply mutate a "draft state" that is then returned, we never have to worry about risking to mutate the state as we never have access to the state object.
+
+The application as well implement react router, whereas redux will be the unique source of truth for data, redux router will be the unique source of truth for URL and navigation. It is used in order to have have the package name as query parameter of the URL on the dashboard. The allows to have a specific URL for a package search and for example being about to share the URL to someone else.
+
+<a name="clientTechnicalArchitecture"></a>
+
+### 2.2 Testing environment
+
+Regarding the testing environnement, the application is unit / integration tested using Jest framework and Testing Library, which provide simple but powerful testing tools.
+
+The request to the API are mocked using fetch-mock library, the store is mocked using redux-mock-store. This allow use to unit test the actions, the reducers, the api helper but as well to run integration testing on component using mocked data. For example in the dashboard view, the state returned by the store is mocked in order to check that the right panel is displayed depending on the state.
+
+Thanks to redux-mock-store and it `mockStore.getActions()`, we are also able to efficiently test async action creator by checking every action that have been dispatched to the store after the async action creator as be executed.
 
 <a name="clientImprovement"></a>
 
 ### 2.3 Improvement list
 
-Note that the contextAPI could have been used in order to simply story the state of the application. Redux has been use only as a technical demonstration.
+- The client application is lacking end to end tests that have been omitted for development time constraint. End to end testing are the most expensive to put in place and maintain but they give the most confidence regarding quality.

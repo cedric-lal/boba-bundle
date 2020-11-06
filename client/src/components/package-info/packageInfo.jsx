@@ -3,13 +3,14 @@ import './packageInfo.scss';
 /**
  * Component that display size information about one specific version of a package
  * @param {Object} props props of the component
+ * @param {Object} props.version version of the package
  * @param {Object} props.minifiedSizeInKb size of the package minified in kb
  * @param {Object} props.gzipSizeInKb size of the package in kb
  */
 const PackageInfo = (props) => {
   return (
     <div className='package-info'>
-      <h2> Latest version bundle size </h2>
+      <h2> Bundle size for v{props.version} </h2>
       <div className='minified'>
         <span className='size'>{props.minifiedSizeInKb}</span>
         <span className='unit'>Kb</span>

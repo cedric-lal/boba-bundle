@@ -58,10 +58,7 @@ const Dashboard = () => {
     // Data ready for display state
     dashboardPanel = (
       <div className='stat-container'>
-        <PackageInfo
-          minifiedSizeInKb={sizeStats[0].minifiedSizeInKb}
-          gzipSizeInKb={sizeStats[0].gzipSizeInKb}
-        ></PackageInfo>
+        <PackageInfo {...sizeStats[0]}></PackageInfo>
         <Chart sizeStats={sizeStats}></Chart>
       </div>
     );
