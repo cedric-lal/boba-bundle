@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import userEvent from "@testing-library/user-event";
 import Search from "./Search";
-import { updateSearchInput } from "../../store/actions/search";
+import { updateSearchInput } from "../../store/actions/search/search";
 
 const mockHistoryPush = jest.fn();
 jest.mock('react-router-dom', () => ({

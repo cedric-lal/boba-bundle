@@ -25,10 +25,10 @@ test("reducer return state unchanged when action unknown", () => {
 
   const state = packageStats(previousState, { type: "unknown action" });
 
-  expect(state).toBe(previousState); // Same object reference is returned
+  expect(state).toBe(previousState); // Same untouched object reference is returned
 });
 
-test("reducer return new state when start fetching", () => {
+test("return start fetching state", () => {
   const previousState = {
     fetchingDone: true,
     hasError: true,
@@ -92,7 +92,7 @@ test("fetch success after an error", () => {
   expect(state).toEqual(expectedState);
 });
 
-test("reducer return new state on fetch error", () => {
+test("return fetch error state", () => {
   const previousState = {
     fetchingDone: true,
     hasError: false,

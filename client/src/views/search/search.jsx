@@ -1,6 +1,6 @@
 import "./search.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSearchInput } from "../../store/actions/search";
+import { updateSearchInput } from "../../store/actions/search/search";
 import SearchInput from "../../components/search-input/searchInput";
 import { useHistory } from "react-router-dom";
 

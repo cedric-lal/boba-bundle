@@ -8,7 +8,7 @@ const defaultState = {
   sizeStats: [],
 };
 
-export default produce((draft = defaultState, action) => {
+const packageStats = produce((draft = defaultState, action) => {
   switch (action.type) {
     case START_FETCHING:
       draft.fetchingDone = false;
@@ -29,5 +29,6 @@ export default produce((draft = defaultState, action) => {
     default:
       return draft;
   }
-}
-);
+});
+
+export default packageStats;

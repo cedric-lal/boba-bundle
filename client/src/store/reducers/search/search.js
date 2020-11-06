@@ -5,13 +5,15 @@ const defaultState = {
     currentSearch: ""
 };
 
-export default produce((draft = defaultState, action) => {
+const search = produce((draft = defaultState, action) => {
     switch (action.type) {
         case INPUT_UPDATED:
             draft.currentSearch = action.newSearch;
-            return draft
+            return draft;
         default:
             return draft;
     }
-}
-);
+});
+
+
+export default search;
