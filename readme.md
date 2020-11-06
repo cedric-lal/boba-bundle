@@ -88,6 +88,9 @@ As stated earlier, the API has some shortcomings that have been taken in order t
 
 <a name="clientPres"></a>
 
+![Desktop version of the application](./desktop.png?raw=true 'Desktop view')
+![Mobile version of the application](./mobile.png?raw=true 'Mobile view')
+
 ### 2.1 Presentation
 
 <a name="clientTechnicalArchitecture"></a>
