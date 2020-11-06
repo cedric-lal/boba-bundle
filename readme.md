@@ -86,35 +86,33 @@ As stated earlier, the API has some shortcomings that have been taken in order t
 
 ## 2. Client Documentation
 
-<a name="clientPres"></a>
-
 ![Desktop version of the application](./desktop.png?raw=true 'Desktop view')
 ![Mobile version of the application](./mobile.png?raw=true 'Mobile view')
 
+<a name="clientPres"></a>
+
 ### 2.1 Presentation
+
+When arriving on the application, the user land on the home page when he can interact with an input search in order to look for a package.
+
+When the user search for a package, either by pressing enter in the input or click the search button, he is redirected to the dashboard page.
+
+The dashboard displays different panels depending on the current state of the application:
+
+- Display the package information including the sizes of the latest version and history chart to let user compare the latest version with previous sizes
+- The loading panel is display while the data for a package are being fetch
+- The error state is display when retrieving the information failed
+
+The user can execute a new search directly from the dashboard by interacting with the input at the top of the page.
 
 <a name="clientTechnicalArchitecture"></a>
 
 ### 2.2 Technical architecture
+
+The client of boba bundle is an independent application that is only communication to the API through http calls.
 
 <a name="clientImprovement"></a>
 
 ### 2.3 Improvement list
 
 Note that the contextAPI could have been used in order to simply story the state of the application. Redux has been use only as a technical demonstration.
-
-Backend:
-
-- better error management
-
-- need a cache and a database
-
-- For a better user experience, the application will always compare the latest package version with 3 other versions including at least 1 major version
-
-Limitiation of the backend:
-
-Some package cannot be bundle because webpack is missing a loader or because of some specific package error
-
-Front end: short end;
-
-- mock are duplicated
