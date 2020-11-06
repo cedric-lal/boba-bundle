@@ -1,18 +1,18 @@
-#Boba bundle
+# Boba bundle
 
 Boba bundle is an application that let you know the impact of adding an NPM package to your bundle.
-It bundle a the package with all its dependencies in order to let you know the real size impact of adding it to your project.\
+It bundle a the package with all its dependencies in order to let you know the real size impact of adding it to your project.
 
 Boba bundle also provides information about the size of previous versions of the package.
 
-1. [ API Documentation ](#apiDoc)\
-   &nbsp;1.1. [ Technical architecture ](#apiTechnicalArchitecture)\
-   &nbsp;1.2 [ How does it work ](#howItWorks)\
-   &nbsp;1.3 [ Limitations of the API](#apiLimitation)\
-   &nbsp;1.4 [ Improvement list ](#apiImprovement)\
-2. [ Client documentation ](#clientDoc)\
-   &nbsp;2.1. [ Technical architecture ](#clientTechnicalArchitecture)\
-   &nbsp;2.2 [ Improvement list ](#clientImprovement)\
+1. [ API Documentation ](#apiDoc)  
+   &nbsp;1.1. [ Technical architecture ](#apiTechnicalArchitecture)  
+   &nbsp;1.2 [ How does it work ](#howItWorks)  
+   &nbsp;1.3 [ Limitations of the API](#apiLimitation)  
+   &nbsp;1.4 [ Improvement list ](#apiImprovement)
+2. [ Client documentation ](#clientDoc)  
+   &nbsp;2.1. [ Technical architecture ](#clientTechnicalArchitecture)  
+   &nbsp;2.2 [ Improvement list ](#clientImprovement)
 
 <a name="apiDocumentation"></a>
 
@@ -44,7 +44,7 @@ Boba bundle also provides information about the size of previous versions of the
 
 <a name="clientImprovement"></a>
 
-### 2.2 CImprovement list
+### 2.2 Improvement list
 
 Note that the contextAPI could have been used in order to simply story the state of the application. Redux has been use only as a technical demonstration.
 
