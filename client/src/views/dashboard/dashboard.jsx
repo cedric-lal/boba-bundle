@@ -1,14 +1,14 @@
-import "./dashboard.scss";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
-import { fetchingPackageStats } from "../../store/actions/package=stats/packageStats";
-import { updateSearchInput } from "../../store/actions/search/search";
-import SearchInput from "../../components/search-input/searchInput";
-import PackageInfo from "../../components/package-info/packageInfo";
-import LoadingSpinner from "../../components/loading-spinner/loadingSpinner";
-import ErrorPanel from "../../components/error-panel/errorPanel";
-import Chart from "../../components/chart/chart";
+import './dashboard.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
+import { fetchingPackageStats } from '../../store/actions/package=stats/packageStats';
+import { updateSearchInput } from '../../store/actions/search/search';
+import SearchInput from '../../components/search-input/searchInput';
+import PackageInfo from '../../components/package-info/packageInfo';
+import LoadingSpinner from '../../components/loading-spinner/loadingSpinner';
+import ErrorPanel from '../../components/error-panel/errorPanel';
+import Chart from '../../components/chart/chart';
 
 /**
  *  This view component represent the Dashboard of the application, displaying all the information a specific package
@@ -47,7 +47,7 @@ const Dashboard = () => {
    * @param {string} search
    */
   const handleSearch = (search) => {
-    routerHistory.push("/dashboard/" + search);
+    routerHistory.push('/dashboard/' + search);
   };
 
   // Select which panel to display
@@ -55,7 +55,7 @@ const Dashboard = () => {
   if (fetchingDone && !hasError) {
     // Data ready for display state
     dashboardPanel = (
-      <div className="stat-container">
+      <div className='stat-container'>
         <PackageInfo
           minifiedSizeInKb={sizeStats[0].minifiedSizeInKb}
           gzipSizeInKb={sizeStats[0].gzipSizeInKb}
@@ -72,13 +72,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="dashboard">
+    <div className='dashboard'>
       <SearchInput
         value={currentSearch}
         onSearch={handleSearch}
         onChange={handleSearchInputChange}
       />
-      <section className="dashboard-information-panel">
+      <section className='dashboard-information-panel'>
         {dashboardPanel}
       </section>
     </div>

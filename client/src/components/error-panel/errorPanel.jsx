@@ -1,4 +1,4 @@
-import "./errorPanel.scss";
+import './errorPanel.scss';
 
 /**
  * Component that display an error message
@@ -7,15 +7,15 @@ import "./errorPanel.scss";
  */
 const ErrorPanel = (props) => {
   return (
-    <div className="error-panel">
+    <div className='error-panel'>
       <img
-        src="/error.svg"
-        alt="Error icon"
-        aria-hidden="true"
-        width="120px"
-        height="120px"
+        src='/error.svg'
+        alt='Error icon'
+        aria-hidden='true'
+        width='120px'
+        height='120px'
       />
-      <div className="error-message">{props.errorMessage}</div>
+      <div className='error-message'>{props.errorMessage}</div>
     </div>
   );
 };

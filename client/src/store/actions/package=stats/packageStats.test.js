@@ -1,9 +1,14 @@
-import { fetchingPackageStats, startFetching, fetchSuccess, fetchError } from "./packageStats";
-import * as ActionTypes from "../../actions/types";
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import * as MockPackageStats from "../../mock/packageStats.mock";
-import * as MockPackageApi from "../../../api/package.mock";
+import {
+  fetchingPackageStats,
+  startFetching,
+  fetchSuccess,
+  fetchError,
+} from './packageStats';
+import * as ActionTypes from '../../actions/types';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import * as MockPackageStats from '../../mock/packageStats.mock';
+import * as MockPackageApi from '../../../api/package.mock';
 
 const createMockStore = configureMockStore([thunk]);
 
@@ -51,12 +56,15 @@ const createMockStore = configureMockStore([thunk]);
 //     expect(action).toEqual({ type: ActionTypes.FETCH_ERROR, errorMessage: "error message" });
 // });
 
-test("fetch success action creator returns fetch success action", () => {
-    const sizeStatsMock = {
-        version: "1.1.2",
-        minifiedSizeInKb: 32.2,
-        gzipSizeInKb: 11,
-    };
-    const action = fetchSuccess(sizeStatsMock);
-    expect(action).toEqual({ type: ActionTypes.FETCH_SUCCESS, payload: sizeStatsMock });
+test('fetch success action creator returns fetch success action', () => {
+  const sizeStatsMock = {
+    version: '1.1.2',
+    minifiedSizeInKb: 32.2,
+    gzipSizeInKb: 11,
+  };
+  const action = fetchSuccess(sizeStatsMock);
+  expect(action).toEqual({
+    type: ActionTypes.FETCH_SUCCESS,
+    payload: sizeStatsMock,
+  });
 });

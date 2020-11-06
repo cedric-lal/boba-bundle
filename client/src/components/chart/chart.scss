@@ -1,4 +1,4 @@
-@import "../../style/mixin.scss";
+@import '../../style/mixin.scss';
 
 .chart-panel {
   width: 100%;
@@ -46,7 +46,7 @@
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -59,7 +59,7 @@
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -105,7 +105,7 @@
   .gzip {
     &::before {
       display: inline-block;
-      content: "";
+      content: '';
       height: 15px;
       width: 15px;
       margin-right: 5px;

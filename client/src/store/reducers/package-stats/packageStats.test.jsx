@@ -1,5 +1,5 @@
-import packageStats from "./packageStats";
-import * as ActionTypes from "../../actions/types";
+import packageStats from './packageStats';
+import * as ActionTypes from '../../actions/types';
 
 const defaultState = {
   fetchingDone: false,
@@ -9,37 +9,37 @@ const defaultState = {
 };
 
 const sizeStatsMock = {
-  version: "1.1.2",
+  version: '1.1.2',
   minifiedSizeInKb: 32.2,
   gzipSizeInKb: 11,
 };
 
-test("reducer return default state", () => {
-  const state = packageStats(undefined, { type: "unknown action" });
+test('reducer return default state', () => {
+  const state = packageStats(undefined, { type: 'unknown action' });
   expect(state).toEqual(defaultState);
 });
 
-test("reducer return state unchanged when action unknown", () => {
+test('reducer return state unchanged when action unknown', () => {
   const previousState = { ...defaultState };
   previousState.fetchingDone = true;
 
-  const state = packageStats(previousState, { type: "unknown action" });
+  const state = packageStats(previousState, { type: 'unknown action' });
 
   expect(state).toBe(previousState); // Same untouched object reference is returned
 });
 
-test("return start fetching state", () => {
+test('return start fetching state', () => {
   const previousState = {
     fetchingDone: true,
     hasError: true,
-    errorMessage: "Some error message",
+    errorMessage: 'Some error message',
     sizeStats: [{ version: 0 }],
   };
 
   const expectedState = {
     fetchingDone: false,
     hasError: false,
-    errorMessage: "Some error message", // Error message should not be impacted by starting a new fetch
+    errorMessage: 'Some error message', // Error message should not be impacted by starting a new fetch
     sizeStats: [{ version: 0 }], // Current data should not be impacted but starting a new fetch
   };
 
@@ -51,7 +51,7 @@ test("return start fetching state", () => {
   expect(state).toEqual(expectedState);
 });
 
-test("fetch success from default state", () => {
+test('fetch success from default state', () => {
   const expectedState = {
     fetchingDone: true,
     hasError: false,
@@ -68,11 +68,11 @@ test("fetch success from default state", () => {
   expect(state).toEqual(expectedState);
 });
 
-test("fetch success after an error", () => {
+test('fetch success after an error', () => {
   const previousState = {
     fetchingDone: false,
     hasError: false,
-    errorMessage: "had errors",
+    errorMessage: 'had errors',
     sizeStats: [],
   };
 
@@ -92,24 +92,24 @@ test("fetch success after an error", () => {
   expect(state).toEqual(expectedState);
 });
 
-test("return fetch error state", () => {
+test('return fetch error state', () => {
   const previousState = {
     fetchingDone: true,
     hasError: false,
-    errorMessage: "Previous error message",
+    errorMessage: 'Previous error message',
     sizeStats: [{ version: 0 }],
   };
 
   const expectedState = {
     fetchingDone: true,
     hasError: true,
-    errorMessage: "error message",
+    errorMessage: 'error message',
     sizeStats: [],
   };
 
   const state = packageStats(previousState, {
     type: ActionTypes.FETCH_ERROR,
-    errorMessage: "error message",
+    errorMessage: 'error message',
   });
 
   expect(state).not.toBe(previousState);

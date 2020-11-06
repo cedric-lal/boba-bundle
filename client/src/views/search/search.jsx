@@ -1,8 +1,8 @@
-import "./search.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { updateSearchInput } from "../../store/actions/search/search";
-import SearchInput from "../../components/search-input/searchInput";
-import { useHistory } from "react-router-dom";
+import './search.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateSearchInput } from '../../store/actions/search/search';
+import SearchInput from '../../components/search-input/searchInput';
+import { useHistory } from 'react-router-dom';
 
 const Search = () => {
   const routerHistory = useHistory();
@@ -24,11 +24,11 @@ const Search = () => {
    * @param {string} search the package name to search
    */
   const handleSearch = (search) => {
-    routerHistory.push("/dashboard/" + search);
+    routerHistory.push('/dashboard/' + search);
   };
 
   return (
-    <div className="search">
+    <div className='search'>
       <header>
         <h1>Boba bundle</h1>
         <p> Determine the cost of adding a npm package to your bundle </p>

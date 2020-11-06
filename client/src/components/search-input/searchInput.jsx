@@ -1,4 +1,4 @@
-import "./searchInput.scss";
+import './searchInput.scss';
 
 /**
  * Search input component with typeahead capability
@@ -19,22 +19,22 @@ const SearchInput = (props) => {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       onSearch();
     }
   };
 
   return (
-    <div className="search-container">
+    <div className='search-container'>
       <input
-        type="text"
-        placeholder="Enter package name"
+        type='text'
+        placeholder='Enter package name'
         value={props.value}
         onChange={onChange}
         onKeyPress={handleKeyPress}
       ></input>
-      <button type="button" onClick={onSearch}>
-        <img className="loupe-icon" src="/loupe.svg" alt="Loupe icon" />
+      <button type='button' onClick={onSearch}>
+        <img className='loupe-icon' src='/loupe.svg' alt='Loupe icon' />
       </button>
     </div>
   );

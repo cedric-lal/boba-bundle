@@ -1,4 +1,4 @@
-import "./packageInfo.scss";
+import './packageInfo.scss';
 
 /**
  * Component that display size information about one specific version of a package
@@ -8,16 +8,16 @@ import "./packageInfo.scss";
  */
 const PackageInfo = (props) => {
   return (
-    <div className="package-info">
+    <div className='package-info'>
       <h2> Latest version bundle size </h2>
-      <div className="minified">
-        <span className="size">{props.minifiedSizeInKb}</span>
-        <span className="unit">Kb</span>
+      <div className='minified'>
+        <span className='size'>{props.minifiedSizeInKb}</span>
+        <span className='unit'>Kb</span>
         <div>Minified</div>
       </div>
-      <div className="gzip">
-        <span className="size">{props.gzipSizeInKb}</span>
-        <span className="unit">Kb</span>
+      <div className='gzip'>
+        <span className='size'>{props.gzipSizeInKb}</span>
+        <span className='unit'>Kb</span>
         <div>Minified + gzipped</div>
       </div>
     </div>
