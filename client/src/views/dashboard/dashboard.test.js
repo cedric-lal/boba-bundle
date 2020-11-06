@@ -77,9 +77,7 @@ test('Stats panel is displayed when in success state', () => {
   mockStore = generateMockStore(MockPackageStats.mockSuccessState);
   const renderedDashboard = mockStoreDashboard();
 
-  const bundleSizeTitle = renderedDashboard.getByText(
-    'Latest version bundle size'
-  );
+  const bundleSizeTitle = renderedDashboard.getByText('Bundle size for v3.1.1');
   const historyChartTitle = renderedDashboard.getByText('Sizes history');
 
   expect(bundleSizeTitle).toBeInTheDocument();

@@ -35,7 +35,7 @@ export const mockSuccessState = {
     errorMessage: null,
     sizeStats: [
       {
-        version: '1.1.1',
+        version: '3.1.1',
         minifiedSizeInKb: 3.2,
         gzipSizeInKb: 2.4,
       },
