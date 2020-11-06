@@ -57,15 +57,6 @@ test('Searching a package update URL parameter', () => {
   expect(mockHistoryPush).toHaveBeenCalledWith('/dashboard/lodash');
 });
 
-test('Dispatch fetch package stats actions on page load', () => {
-  mockStore = generateMockStore(MockPackageStats.mockErrorState);
-  mockStoreDashboard();
-
-  // Check that the START_FETCHING action has been dispatched
-  const dispatchedActions = mockStore.getActions().map((action) => action.type);
-  expect(dispatchedActions.includes(ActionTypes.START_FETCHING)).toBeTruthy();
-});
-
 test('Error panel is displayed when in error state', () => {
   mockStore = generateMockStore(MockPackageStats.mockErrorState);
   const renderedDashboard = mockStoreDashboard();

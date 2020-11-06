@@ -21,22 +21,14 @@ export const mockSuccessPayload = [
   },
 ];
 
-const mockErrorPayload = {
-  errorMessage: 'Mock error message',
+export const mockErrorMessage = 'Mock error message';
+
+export const fetchSuccess = {
+  status: 200,
+  body: mockSuccessPayload,
 };
 
-export const fetchSuccess = async () => {
-  console.log('Ïm calling fetch success mock');
-  return {
-    status: 200,
-    payload: mockSuccessPayload,
-  };
-};
-
-export const fetchError = async () => {
-  console.log('Ïm calling fetch error mock');
-  return {
-    status: 400,
-    payload: mockErrorPayload,
-  };
+export const fetchError = {
+  status: 400,
+  body: { errorMessage: mockErrorMessage },
 };

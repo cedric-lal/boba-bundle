@@ -7,54 +7,75 @@ import {
 import * as ActionTypes from '../../actions/types';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import fetchMock from 'fetch-mock';
 import * as MockPackageStats from '../../mock/packageStats.mock';
-import * as MockPackageApi from '../../../api/package.mock';
+import * as MockPackageApi from '../../../api/package/package.mock';
+import apiBaseURL from '../../../api/apiConfig';
 
 const createMockStore = configureMockStore([thunk]);
 
-// test("fetch package stats dispatch appropriate actions for a failed fetch", () => {
-//     jest.mock("../../../api/package", () => {
-//         return MockPackageApi.fetchError;
-//     });
-//     const mockStore = createMockStore(MockPackageStats.mockDefaultState);
+afterEach(() => {
+  fetchMock.restore();
+});
 
-//     const expectedActions = [
-//         { type: ActionTypes.INPUT_UPDATED, newSearch: 'react' },
-//         { type: ActionTypes.START_FETCHING },
-//         { type: ActionTypes.FETCH_ERROR, ...MockPackageApi.mockErrorPayload }
-//     ]
+test('fetch package stats should dispatch appropriate actions for a failed fetch', () => {
+  fetchMock.getOnce(
+    apiBaseURL + 'api/search?package=react',
+    MockPackageApi.fetchError
+  );
 
-//     return mockStore.dispatch(fetchingPackageStats("react")).then(() => {
-//         expect(mockStore.getActions()).toEqual(expectedActions);
-//     });
-// });
+  const mockStore = createMockStore(MockPackageStats.mockDefaultState);
 
-// test("fetch package stats dispatch appropriate actions for a successful fetch", () => {
-//     jest.mock("../../../api/package", () => {
-//         return MockPackageApi.fetchSuccess;
-//     });
-//     const mockStore = createMockStore(MockPackageStats.mockDefaultState);
+  const expectedActions = [
+    { type: ActionTypes.INPUT_UPDATED, newSearch: 'react' },
+    { type: ActionTypes.START_FETCHING },
+    {
+      type: ActionTypes.FETCH_ERROR,
+      errorMessage: MockPackageApi.mockErrorMessage,
+    },
+  ];
 
-//     const expectedActions = [
-//         { type: ActionTypes.INPUT_UPDATED, newSearch: MockPackageStats.mockSuccessPayload },
-//         { type: ActionTypes.START_FETCHING },
-//         { type: ActionTypes.FETCH_SUCCESS, ...MockPackageApi.mockSuccessPayload }
-//     ]
+  return mockStore.dispatch(fetchingPackageStats('react')).then(() => {
+    expect(mockStore.getActions()).toEqual(expectedActions);
+  });
+});
 
-//     return mockStore.dispatch(fetchingPackageStats("react")).then(() => {
-//         expect(mockStore.getActions()).toEqual(expectedActions)
-//     });
-// });
+test('fetch package stats should dispatch appropriate actions for a successful fetch', () => {
+  fetchMock.getOnce(
+    apiBaseURL + 'api/search?package=lodash',
+    MockPackageApi.fetchSuccess
+  );
+  const mockStore = createMockStore(MockPackageStats.mockDefaultState);
 
-// test("start fetching action creator returns start fetching action", () => {
-//     const action = startFetching("react");
-//     expect(action).toEqual({ type: ActionTypes.START_FETCHING });
-// });
+  const expectedActions = [
+    {
+      type: ActionTypes.INPUT_UPDATED,
+      newSearch: 'lodash',
+    },
+    { type: ActionTypes.START_FETCHING },
+    {
+      type: ActionTypes.FETCH_SUCCESS,
+      payload: MockPackageApi.mockSuccessPayload,
+    },
+  ];
 
-// test("fetch error action creator returns start fetching action", () => {
-//     const action = fetchError("error message");
-//     expect(action).toEqual({ type: ActionTypes.FETCH_ERROR, errorMessage: "error message" });
-// });
+  return mockStore.dispatch(fetchingPackageStats('lodash')).then(() => {
+    expect(mockStore.getActions()).toEqual(expectedActions);
+  });
+});
+
+test('start fetching action creator returns start fetching action', () => {
+  const action = startFetching('react');
+  expect(action).toEqual({ type: ActionTypes.START_FETCHING });
+});
+
+test('fetch error action creator returns start fetching action', () => {
+  const action = fetchError('error message');
+  expect(action).toEqual({
+    type: ActionTypes.FETCH_ERROR,
+    errorMessage: 'error message',
+  });
+});
 
 test('fetch success action creator returns fetch success action', () => {
   const sizeStatsMock = {

@@ -31,7 +31,9 @@ const Dashboard = () => {
 
   // Hook use to trigger backend calls and update the store
   useEffect(() => {
-    dispatch(fetchingPackageStats(packageName));
+    if (packageName) {
+      dispatch(fetchingPackageStats(packageName));
+    }
   }, [dispatch, packageName]);
 
   /**
