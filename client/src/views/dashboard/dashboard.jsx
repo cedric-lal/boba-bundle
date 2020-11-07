@@ -2,7 +2,7 @@ import './dashboard.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { fetchingPackageStats } from '../../store/actions/package=stats/packageStats';
+import { fetchingPackageStats } from '../../store/actions/package-stats/packageStats';
 import { updateSearchInput } from '../../store/actions/search/search';
 import SearchInput from '../../components/search-input/searchInput';
 import PackageInfo from '../../components/package-info/packageInfo';
