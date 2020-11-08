@@ -19,7 +19,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   // Get dashboard data from the store
-  let {
+  const {
     currentSearch,
     fetchingDone,
     hasError,

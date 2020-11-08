@@ -9,7 +9,7 @@ const Search = () => {
   const dispatch = useDispatch();
 
   // Get search data from the store
-  let { currentSearch } = useSelector((state) => state.search);
+  const { currentSearch } = useSelector((state) => state.search);
 
   /**
    * Handle the input search value change by dispatching an action
