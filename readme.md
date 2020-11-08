@@ -146,3 +146,4 @@ Thanks to redux-mock-store and its `mockStore.getActions()`, we are also able to
 ### 2.3 Improvement list
 
 - The client application is lacking end to end tests that have been omitted for development time constraint. End to end testing are the most expensive to put in place and maintain but they give the most confidence regarding quality.
+- Internationalisation should be added for multi language support.

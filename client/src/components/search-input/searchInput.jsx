@@ -1,7 +1,7 @@
 import './searchInput.scss';
 
 /**
- * Search input component with typeahead capability
+ * Search input component
  * @param {object} props props of the component
  * @param {string} props.value value of the input
  * @param {Function} props.onChange callback trigger to handle input change

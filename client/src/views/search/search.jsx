@@ -4,6 +4,9 @@ import { updateSearchInput } from '../../store/actions/search/search';
 import SearchInput from '../../components/search-input/searchInput';
 import { useHistory } from 'react-router-dom';
 
+/**
+ *  This view component represent the homepage of the application, let the user search for a package
+ */
 const Search = () => {
   const routerHistory = useHistory();
   const dispatch = useDispatch();

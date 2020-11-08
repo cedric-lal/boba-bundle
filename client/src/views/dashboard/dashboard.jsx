@@ -11,7 +11,7 @@ import ErrorPanel from '../../components/error-panel/errorPanel';
 import Chart from '../../components/chart/chart';
 
 /**
- *  This view component represent the Dashboard of the application, displaying all the information a specific package
+ *  This view component represent the Dashboard of the application, displaying all the information of a specific package
  */
 const Dashboard = () => {
   const { packageName } = useParams(); // Get the parameter in the URL
