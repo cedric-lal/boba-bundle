@@ -80,7 +80,7 @@ As stated earlier, the API has some shortcomings that have been taken in order t
 
 - Unit tests / integrations tests should be added (omitted to speed up development).
 
-- Add security check regarding the package name provided, to make sure it is a valid package name and avoid malicious injection.
+- Add security check regarding the package name provided, to make sure it is a valid package name and avoid malicious injections.
 
 - Better error management. Currently, every time the API fail it return the same generic error message. A more granular error management that return different errors like "package not found" or "build failed" would improve the user experience.
 

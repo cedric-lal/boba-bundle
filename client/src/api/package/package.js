@@ -6,7 +6,8 @@ import apiBaseURL from '../apiConfig';
  * @returns {[{version: string, minifiedSizeInKb: string, gzipSizeInKb: string}]} search api response json
  */
 export const search = async (packageName) => {
-  return fetch(apiBaseURL + 'api/search?package=' + packageName).then(
+  const trimmedPkgName = packageName.replace(/\s/g, ''); // Remove all whitespace characters
+  return fetch(apiBaseURL + 'api/search?package=' + trimmedPkgName).then(
     async (res) => {
       return {
         status: res.status,
